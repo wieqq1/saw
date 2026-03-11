@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Имя вашего образа в Docker Hub
-        DOCKER_IMAGE = 'your_dockerhub_username/my-laravel-app'
+        DOCKER_IMAGE = 'wieq1/my-laravel-app'
         // Используем учетные данные, которые мы добавили ранее
         DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
     }
@@ -60,7 +60,7 @@ pipeline {
                     sh 'docker stop my-running-app || true'
                     sh 'docker rm my-running-app || true'
                     // 2. Запускаем новый контейнер из только что собранного образа
-                    sh "docker run -d -p 8080:80 --name my-running-app ${env.DOCKER_IMAGE}:${env.BUILD_ID}"
+                    sh "docker run -d -p 8082:80 --name my-running-app ${env.DOCKER_IMAGE}:${env.BUILD_ID}"
                 }
             }
         }
